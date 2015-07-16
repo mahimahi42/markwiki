@@ -2,13 +2,7 @@
 
 Markwiki is a Ruby gem designed to ease the development and maintenance of locally designed static sites using Markdown. Too often, at least for me, static site generators aren't intuitive to use, aren't focused for simple static sites (not blogs), or most often don't support GitHub flavoured Markdown (GFM).
 
-Markwiki is different in that it is a tool written by me, for me. However, it may be useful for you if you want a simple static site with GFM. In fact, the ideal workflow with Markwiki is:
-
-    Create a site with markwiki --init <NAME>
-    Write website stuff (Markdown, CSS (SASS?), and JS)
-    Compile and upload to your server with markwiki --launch
-
-Simple, eh?
+Markwiki follows the philosophy that you should have to do as little configuration as possible, with the ability to customize as much as possible. A Markwiki site begins as a skeleton directory structure as a YAML or JSON file, known as a *configuration*. These configurations are designed to be as intuitive as possible.
 
 ## Installation
 
