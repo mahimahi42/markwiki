@@ -67,8 +67,9 @@ module Markwiki
                 end
             end
 
-            # Path to default configuration
+            # Create the Markwiki configuration
             if config.eql? self.load_default_config
+                # Path to the default configuration
                 path = self.root.static(".markwiki.cfg").to_s
                 FileUtils.cp(path, "#{site_name}")
             else
@@ -78,6 +79,10 @@ module Markwiki
             end
         end
 
+        # Generate a YAML representation of a configuration
+        #
+        # @param config [Hash] a Markwiki configuration
+        # @return [String] a YAML representation of the configuration
         def self.generate_yaml_config(config)
             YAML.dump(config)
         end

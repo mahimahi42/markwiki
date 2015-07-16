@@ -43,6 +43,9 @@ module Markwiki
 				puts "ERROR: Missing site name"
 				exit
 			end
+
+			site = Markwiki::Markwiki.new
+			site.init_site(options[:name])
 		end
 	end
 end
