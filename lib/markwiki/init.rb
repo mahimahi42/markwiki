@@ -1,5 +1,7 @@
 # @author Bryce Davis <me@bryceadavis.com>
 require 'json' # For JSON parsing
+require 'yaml' # For YAML parsing
+require 'jewel' # For access to static resources
 
 module Markwiki
     # The default Markwiki skeleton, to be converted to JSON.
@@ -22,7 +24,9 @@ module Markwiki
     }
 
     # Wrapper class for Markwiki initialization
-    class Init
+    class Init < Jewel::Gem
+        root "../.."
+
         # @todo Finish site initialization
         def self.init_site(site_name)
             
@@ -86,6 +90,15 @@ module Markwiki
                     "files" => img_files
                 }
             }
+        end
+
+        def self.load_default_config
+            config = nil
+            path = self.root.static(".markwiki.cfg").to_s
+            file = File.open(path, "r") { |file| 
+                config = YAML.load(file)
+            }
+            config
         end
     end
 end
