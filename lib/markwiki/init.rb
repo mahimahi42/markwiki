@@ -90,17 +90,19 @@ module Markwiki
         # Generate a JSON String representation of a Markwiki
         # site.
         #
+        # @param config [Hash] a Markwiki configuration
         # @return [String] the Markwiki configuration as a JSON String
-        def self.generate_json_config
-            CONFIG.to_json
+        def self.generate_json_config(config)
+            config.to_json
         end
 
         # Generate a prettified JSON String representation of a
         # Markwiki site.
         #
+        # @param config [Hash] a Markwiki configuration
         # @return [String] the Markwiki configuration as a JSON String
-        def self.generate_pretty_json_config
-            JSON.pretty_generate CONFIG
+        def self.generate_pretty_json_config(config)
+            JSON.pretty_generate config
         end
 
         # Get a Hash representation of a default Markwiki
