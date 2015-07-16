@@ -44,7 +44,8 @@ module Markwiki
 				exit
 			end
 
-			site = Markwiki::Markwiki.new
+			site = Markwiki.new
+			puts options[:name]
 			site.init_site(options[:name])
 		end
 	end
