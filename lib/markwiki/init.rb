@@ -25,5 +25,9 @@ module Markwiki
         def self.generate_json_config
             Markwiki::CONFIG.to_json
         end
+
+        def self.generate_pretty_json_config
+            JSON.pretty_generate Markwiki::CONFIG
+        end
     end
 end
