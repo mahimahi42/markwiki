@@ -5,5 +5,7 @@ require "jewel"
 
 # Main driver for Markwiki
 module Markwiki
-	
+	class Markwiki
+
+	end
 end

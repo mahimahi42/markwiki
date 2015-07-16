@@ -37,7 +37,7 @@ module Markwiki
         #
         # @return [String] the Markwiki configuration as a JSON String
         def self.generate_json_config
-            Markwiki::CONFIG.to_json
+            CONFIG.to_json
         end
 
         # Generate a prettified JSON String representation of a
@@ -45,7 +45,7 @@ module Markwiki
         #
         # @return [String] the Markwiki configuration as a JSON String
         def self.generate_pretty_json_config
-            JSON.pretty_generate Markwiki::CONFIG
+            JSON.pretty_generate CONFIG
         end
 
         # Get a Hash representation of a default Markwiki
@@ -68,6 +68,7 @@ module Markwiki
         # @param img_files [Array<String>] an Array of image files
         # @return [Hash] a new Markwiki configuration Hash
         def self.generate_config(
+            name: "markwiki",
             files: ["index.html"],
             css: "css",
             css_files: ["styles.css"],
@@ -76,6 +77,7 @@ module Markwiki
             img: "img",
             img_files: [])
             {
+                "name" => name,
                 "files".to_s => files + [".markwiki.cfg"],
                 "css".to_s => {
                     "dir_name" => css,

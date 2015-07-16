@@ -5,6 +5,7 @@ describe "Init" do
         @json = '{"files":["index.html",".markwiki.cfg"],"css":{"dir_name":"css","files":["styles.css"]},"js":{"dir_name":"js","files":["scripts.js"]},"img":{"dir_name":"img","files":[]}}'
         @pjson = "{\n  \"files\": [\n    \"index.html\",\n    \".markwiki.cfg\"\n  ],\n  \"css\": {\n    \"dir_name\": \"css\",\n    \"files\": [\n      \"styles.css\"\n    ]\n  },\n  \"js\": {\n    \"dir_name\": \"js\",\n    \"files\": [\n      \"scripts.js\"\n    ]\n  },\n  \"img\": {\n    \"dir_name\": \"img\",\n    \"files\": [\n\n    ]\n  }\n}"
         @default_config = {
+            "name" => "markwiki",
             "files" => ["index.html", ".markwiki.cfg"],
             "css" => {
                 "dir_name" => "css",
@@ -20,6 +21,7 @@ describe "Init" do
             }
         }
         @config = {
+            "name" => "my-cool-site",
             "files" => ["index.html", "404.html", ".markwiki.cfg"],
             "css" => {
                 "dir_name" => "styles",
@@ -50,6 +52,7 @@ describe "Init" do
 
     it "can generate a configuration hash" do
         expect(Markwiki::Init.generate_config(
+            name: "my-cool-site",
             files: ["index.html", "404.html"],
             css: "styles",
             js: "scripts",
