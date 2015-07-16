@@ -19,6 +19,21 @@ describe "Init" do
                 "files" => []
             }
         }
+        @config = {
+            "files" => ["index.html", "404.html", ".markwiki.cfg"],
+            "css" => {
+                "dir_name" => "styles",
+                "files" => ["styles.css"]
+            },
+            "js" => {
+                "dir_name" => "scripts",
+                "files" => ["scripts.js"]
+            },
+            "img" => {
+                "dir_name" => "images",
+                "files" => []
+            }
+        }
     end
     
     it "can generate a json configuration" do
@@ -31,5 +46,14 @@ describe "Init" do
 
     it "can generate a default configuration hash" do
         expect(Markwiki::Init.default_config).to eq(@default_config)
+    end
+
+    it "can generate a configuration hash" do
+        expect(Markwiki::Init.generate_config(
+            files: ["index.html", "404.html"],
+            css: "styles",
+            js: "scripts",
+            img: "images"
+            )).to eq(@config)
     end
 end

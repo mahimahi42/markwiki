@@ -31,7 +31,7 @@ module Markwiki
         # Generate a JSON String representation of a Markwiki
         # site.
         #
-        # @return [String] the Markwiki skeleton as a JSON String
+        # @return [String] the Markwiki configuration as a JSON String
         def self.generate_json_config
             Markwiki::CONFIG.to_json
         end
@@ -39,9 +39,54 @@ module Markwiki
         # Generate a prettified JSON String representation of a
         # Markwiki site.
         #
-        # @return [String] the Markwiki skeleton as a JSON String
+        # @return [String] the Markwiki configuration as a JSON String
         def self.generate_pretty_json_config
             JSON.pretty_generate Markwiki::CONFIG
+        end
+
+        # Get a Hash representation of a default Markwiki
+        # configuration
+        #
+        # @return [Hash] the default Markwiki configuration
+        def self.default_config
+            self.generate_config
+        end
+
+        # Get a Hash representation of an arbitrary Markwiki
+        # configuration
+        #
+        # @param files [Array<String>] an Array of top-level filenames
+        # @param css [String] the name of the CSS folder
+        # @param css_files [Array<String>] an Array of CSS files
+        # @param js [String] the name of the JavaScript folder
+        # @param js_files [Array<String>] an Array of JavaScript files
+        # @param img [String] the name of the images folder
+        # @param img_files [Array<String>] an Array of image files
+        # @return [Hash] a new Markwiki configuration Hash
+        def self.generate_config(
+            files: ["index.html"],
+            css: "css",
+            css_files: ["styles.css"],
+            js: "js",
+            js_files: ["scripts.js"],
+            img: "img",
+            img_files: []
+            )
+            {
+                "files".to_s => files + [".markwiki.cfg"],
+                "css".to_s => {
+                    "dir_name" => css,
+                    "files" => css_files
+                },
+                "js".to_s => {
+                    "dir_name" => js,
+                    "files" => js_files
+                },
+                "img".to_s => {
+                    "dir_name" => img,
+                    "files" => img_files
+                }
+            }
         end
     end
 end
