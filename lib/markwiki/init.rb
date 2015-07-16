@@ -2,6 +2,9 @@
 require 'json' # For JSON parsing
 
 module Markwiki
+    # The default Markwiki skeleton, to be converted to JSON.
+    # Custom skeletons/configurations can be defined as Ruby Hashes
+    # or JSON
     CONFIG = {
         "files" => ["index.html", ".markwiki.cfg"],
         "css" => {
@@ -18,6 +21,7 @@ module Markwiki
         }
     }
 
+    # Wrapper class for Markwiki initialization
     class Init
         # @todo Finish site initialization
         def self.init_site(site_name)

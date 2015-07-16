@@ -1,3 +1,5 @@
+# @author Bryce Davis <me@bryceadavis.com>
 module Markwiki
-  VERSION = "0.1.0"
+    # Current Markwiki version number
+    VERSION = "0.0.1"
 end
