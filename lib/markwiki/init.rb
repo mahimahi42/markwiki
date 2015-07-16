@@ -17,13 +17,13 @@ module Markwiki
         }
     }
 
-    class Init
+    class Markwiki::Init
         def self.init_site(site_name)
             
         end
 
-        def generate_json_config
-            Markdown::CONFIG.to_json
+        def self.generate_json_config
+            Markwiki::CONFIG.to_json
         end
     end
 end
