@@ -70,8 +70,7 @@ module Markwiki
             js: "js",
             js_files: ["scripts.js"],
             img: "img",
-            img_files: []
-            )
+            img_files: [])
             {
                 "files".to_s => files + [".markwiki.cfg"],
                 "css".to_s => {
