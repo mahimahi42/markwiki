@@ -4,7 +4,7 @@ describe "Init" do
     before :all do
         @json = '{"files":["index.html",".markwiki.cfg"],"css":{"dir_name":"css","files":["styles.css"]},"js":{"dir_name":"js","files":["scripts.js"]},"img":{"dir_name":"img","files":[]}}'
         @pjson = "{\n  \"files\": [\n    \"index.html\",\n    \".markwiki.cfg\"\n  ],\n  \"css\": {\n    \"dir_name\": \"css\",\n    \"files\": [\n      \"styles.css\"\n    ]\n  },\n  \"js\": {\n    \"dir_name\": \"js\",\n    \"files\": [\n      \"scripts.js\"\n    ]\n  },\n  \"img\": {\n    \"dir_name\": \"img\",\n    \"files\": [\n\n    ]\n  }\n}"
-        @yaml = "---\nname: my-cool-site\nfiles:\n- index.html\n- 404.html\ncss:\n  dir_name: styles\n  files:\n  - styles.css\njs:\n  dir_name: scripts\n  files:\n  - scripts.js\nimg:\n  dir_name: images\n  files: []\n"
+        @yaml = "---\nname: my-cool-site\nfiles:\n- index.html\n- 404.html\n- \".markwiki.cfg\"\ncss:\n  dir_name: styles\n  files:\n  - styles.css\njs:\n  dir_name: scripts\n  files:\n  - scripts.js\nimg:\n  dir_name: images\n  files: []\n"
         @default_config = {
             "name" => "markwiki",
             "files" => ["index.html", ".markwiki.cfg"],
@@ -61,6 +61,10 @@ describe "Init" do
             )).to eq(@config)
     end
 
+    it "can generate a configuration as YAML" do
+        expect(Markwiki::Init.generate_yaml_config(@config)).to eq(@yaml)
+    end
+
     it "can load the default configuration file" do
         expect(Markwiki::Init.load_default_config).to eq(@default_config)
     end
@@ -114,7 +118,7 @@ describe "Init" do
             Markwiki::Init.init_site(@name)
             expect(File.exists? "#{@name}/js/scripts.js").to eq(true)
         end
-        
+
         describe "custom configurations" do
             before :all do
                 @name = "my-cool-site"

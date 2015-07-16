@@ -72,8 +72,14 @@ module Markwiki
                 path = self.root.static(".markwiki.cfg").to_s
                 FileUtils.cp(path, "#{site_name}")
             else
-                
+                File.open("#{site_name}/.markwiki.cfg", "w") do |file| 
+                    file.write(self.generate_yaml_config(config))
+                end
             end
+        end
+
+        def self.generate_yaml_config(config)
+            YAML.dump(config)
         end
 
         # Generate a JSON String representation of a Markwiki
