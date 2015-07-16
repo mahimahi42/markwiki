@@ -56,4 +56,8 @@ describe "Init" do
             img: "images"
             )).to eq(@config)
     end
+
+    it "can load the default configuration file" do
+        expect(Markwiki::Init.load_default_config).to eq(@default_config)
+    end
 end
