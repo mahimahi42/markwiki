@@ -18,7 +18,7 @@ module Markwiki
         }
     }
 
-    class Markwiki::Init
+    class Init
         # @todo Finish site initialization
         def self.init_site(site_name)
             
