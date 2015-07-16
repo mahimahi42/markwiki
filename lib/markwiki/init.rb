@@ -28,8 +28,14 @@ module Markwiki
         root "../.."
 
         # @todo Finish site initialization
-        def self.init_site(site_name)
+        def self.init_site(site_name, config: self.load_default_config)
             Dir.mkdir(site_name)
+
+            config.each_key do |key|
+                if config[key].is_a? Hash
+                    Dir.mkdir(File.join(site_name, config[key]["dir_name"]))
+                end
+            end
         end
 
         # Generate a JSON String representation of a Markwiki
