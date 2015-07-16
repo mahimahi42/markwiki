@@ -27,14 +27,52 @@ module Markwiki
     class Init < Jewel::Gem
         root "../.."
 
-        # @todo Finish site initialization
+        # Creates the Markwiki directory structure from a
+        # configuration.
+        #
+        # @param site_name [String] the name of Markwiki site
+        # @param config [Hash] a Markwiki configuration Hash
         def self.init_site(site_name, config: self.load_default_config)
             Dir.mkdir(site_name)
 
+            # Create the directories
             config.each_key do |key|
                 if config[key].is_a? Hash
                     Dir.mkdir(File.join(site_name, config[key]["dir_name"]))
                 end
+            end
+
+            # Create the files
+            config.each_key do |key|
+                # We have top-level files
+                if config[key].is_a? Array and key.eql? "files"
+                    config[key].each do |file|
+                        unless file.eql? ".markwiki.cfg"
+                            #puts File.join(site_name, file)
+                            FileUtils.touch(File.join(site_name, file))
+                        end
+                    end
+                end
+
+                # We have a subdirectory
+                if config[key].is_a? Hash
+                    config[key].each_key do |subdiropt|
+                        if config[key][subdiropt].is_a? Array and subdiropt.eql? "files"
+                            config[key][subdiropt].each do |file|
+                                #puts File.join(site_name, config[key]["dir_name"], file)
+                                FileUtils.touch(File.join(site_name, config[key]["dir_name"], file))
+                            end
+                        end
+                    end
+                end
+            end
+
+            # Path to default configuration
+            if config.eql? self.load_default_config
+                path = self.root.static(".markwiki.cfg").to_s
+                FileUtils.cp(path, "#{site_name}")
+            else
+                
             end
         end
 
