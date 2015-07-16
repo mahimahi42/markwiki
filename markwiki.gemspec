@@ -10,15 +10,16 @@ Gem::Specification.new do |spec|
   spec.email         = ["me@bryceadavis.com"]
 
   spec.summary       = %q{Ruby utility for managing wiki-like sites with Markdown.}
-  spec.description   = %Q{Markwiki is a Ruby gem designed to ease the development and maintenance of locally designed static sites using Markdown. Too often, at least for me, static site generators aren't intuitive to use, aren't focused for simple static sites (not blogs), or most often don't support GitHub flavoured Markdown (GFM).
-
-Markwiki is different in that it is a tool written by me, for me. However, it may be useful for you if you want a simple static site with GFM. In fact, the ideal workflow with Markwiki is:
-`
-    Create a site with markwiki --init <NAME>
-    Write website stuff (Markdown, CSS (SASS?), and JS)
-    Compile and upload to your server with markwiki --launch
-`
-Simple, eh?}
+  spec.description   = <<-EOF
+    Markwiki is a Ruby gem designed to ease the development and maintenance of 
+    locally designed static sites using Markdown. Too often, at least for me, 
+    static site generators aren't intuitive to use, aren't focused for simple 
+    static sites (not blogs), or most often don't support GitHub 
+    flavoured Markdown (GFM).
+    
+    Markwiki is different in that it is a tool written by me, for me. However, 
+    it may be useful for you if you want a simple static site with GFM.
+  EOF
   spec.homepage      = "https://github.com/mahimahi42/markwiki"
   spec.license       = "MIT"
 
@@ -29,8 +30,8 @@ Simple, eh?}
 
   spec.add_development_dependency "bundler", "~> 1.10"
   spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency "rspec"
-  spec.add_development_dependency "yard"
+  spec.add_development_dependency "rspec", '~> 0'
+  spec.add_development_dependency "yard", '~> 0'
   
-  spec.add_runtime_dependency "json"
+  spec.add_runtime_dependency "json", '~> 0'
 end
