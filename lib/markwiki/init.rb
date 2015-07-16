@@ -29,7 +29,7 @@ module Markwiki
 
         # @todo Finish site initialization
         def self.init_site(site_name)
-            
+            Dir.mkdir(site_name)
         end
 
         # Generate a JSON String representation of a Markwiki

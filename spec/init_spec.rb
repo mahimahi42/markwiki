@@ -63,4 +63,21 @@ describe "Init" do
     it "can load the default configuration file" do
         expect(Markwiki::Init.load_default_config).to eq(@default_config)
     end
+
+    describe "creating directory structure" do
+        before :all do
+            @name = "testsite"
+        end
+
+        after :all do
+            require 'fileutils' # For deleting the directory
+            FileUtils.rm_rf(@name)
+        end
+
+        it "can create the site directory" do
+            Markwiki::Init.init_site(@name)
+
+            expect(Dir.exists? @name).to eq(true)
+        end
+    end
 end
