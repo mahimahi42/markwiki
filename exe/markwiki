@@ -1,0 +1,50 @@
+#!/usr/bin/env ruby
+# @author Bryce Davis <me@bryceadavis.com>
+# For command line option parsing
+require 'optparse'
+# Our gem's code
+require 'markwiki'
+
+module Markwiki
+	# A wrapper class for Markwiki's command line interface
+	class CLI
+		def self.start_cli
+			# A hash of parameters passed on to the CLI
+			options = {
+				:name => nil
+			}
+
+			# Define our available options
+			opts_parser = OptionParser.new do |opts|
+				opts.banner = "Usage: markwiki [options]"
+
+				# Initialize a new Markwiki site
+				opts.on("-i <NAME>", "--init <NAME>", "Create a new Markwiki site") do |name|
+					options[:name] = name
+				end
+
+				# Display the current version number
+				opts.on("-v", "--version", "Show the Markwiki version number") do
+					puts "Markwiki v#{Markwiki::VERSION}"
+					exit
+				end
+
+				# Display the help menu
+				opts.on("-h", "--help", "Display this help menu") do
+					puts opts
+					exit
+				end
+			end
+
+			# Parse the command line options
+			begin
+				opts_parser.parse!
+			rescue OptionParser::MissingArgument => e
+				puts "ERROR: Missing site name"
+				exit
+			end
+		end
+	end
+end
+
+Markwiki::CLI.start_cli
