@@ -92,6 +92,9 @@ module Markwiki
             }
         end
 
+        # Load the default Markwiki configuration file
+        #
+        # @return [Hash] the default configuration as a Hash
         def self.load_default_config
             config = nil
             path = self.root.static(".markwiki.cfg").to_s
