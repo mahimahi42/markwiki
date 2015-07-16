@@ -1,10 +1,18 @@
 # Markwiki
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/markwiki`. To experiment with that code, run `bin/console` for an interactive prompt.
+Markwiki is a Ruby gem designed to ease the development and maintenance of locally designed static sites using Markdown. Too often, at least for me, static site generators aren't intuitive to use, aren't focused for simple static sites (not blogs), or most often don't support GitHub flavoured Markdown (GFM).
 
-TODO: Delete this and the text above, and describe your gem
+Markwiki is different in that it is a tool written by me, for me. However, it may be useful for you if you want a simple static site with GFM. In fact, the ideal workflow with Markwiki is:
+
+    Create a site with markwiki --init <NAME>
+    Write website stuff (Markdown, CSS (SASS?), and JS)
+    Compile and upload to your server with markwiki --launch
+
+Simple, eh?
 
 ## Installation
+
+**NOTE:** Markwiki is still is pre-alpha. Don't have high expectations, or really any expectations at all.
 
 Add this line to your application's Gemfile:
 
@@ -22,7 +30,13 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```bash
+# SIMPLE USAGE
+Usage: markwiki [options]
+    -i <NAME>, --init <NAME>         Create a new Markwiki site
+    -v, --version                    Show the Markwiki version number
+    -h, --help                       Display this help menu
+```
 
 ## Development
 
@@ -33,7 +47,6 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/mahimahi42/markwiki. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
-
 
 ## License
 
