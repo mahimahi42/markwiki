@@ -80,15 +80,32 @@ describe "Init" do
         end
 
         it "can create the subdirectories" do
-            config = Markwiki::Init.generate_config(
-                                            name: @name,
-                                            files: ["index.html", "404.html"],
-                                            css: "styles",
-                                            js: "scripts",
-                                            img: "images"
-                                            )
-            Markwiki::Init.init_site(@name, config: config)
-            expect(Dir.exists? "#{@name}/styles").to eq(true)
+            Markwiki::Init.init_site(@name)
+            expect(Dir.exists? "#{@name}/js").to eq(true)
+        end
+
+        describe "custom configurations" do
+            before :all do
+                @name = "my-cool-site"
+                @config = Markwiki::Init.generate_config(
+                                                name: @name,
+                                                files: ["index.html", "404.html"],
+                                                css: "styles",
+                                                js: "scripts",
+                                                img: "images"
+                                                )
+            end
+
+            it "can create the site directory" do
+                Markwiki::Init.init_site(@name)
+
+                expect(Dir.exists? @name).to eq(true)
+            end
+
+            it "can create the subdirectories" do
+                Markwiki::Init.init_site(@name, config: @config)
+                expect(Dir.exists? "#{@name}/styles").to eq(true)
+            end
         end
     end
 end
