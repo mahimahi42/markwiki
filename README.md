@@ -1,6 +1,7 @@
 # Markwiki
 
 [![Build Status](https://travis-ci.org/mahimahi42/markwiki.svg?branch=master)](https://travis-ci.org/mahimahi42/markwiki)
+[![Coverage Status](https://coveralls.io/repos/mahimahi42/markwiki/badge.svg?branch=master&service=github)](https://coveralls.io/github/mahimahi42/markwiki?branch=master)
 
 Markwiki is a Ruby gem designed to ease the development and maintenance of locally designed static sites using Markdown. Too often, at least for me, static site generators aren't intuitive to use, aren't focused for simple static sites (not blogs), or most often don't support GitHub flavoured Markdown (GFM).
 
