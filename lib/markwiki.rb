@@ -8,7 +8,7 @@ module Markwiki
 	# Topmost API for Markwiki
 	class Markwiki
 		# Create a new Markwiki site
-		def init_site(name)
+		def self.init_site(name)
 			Init.init_site(name)
 		end
 	end

@@ -11,7 +11,7 @@ describe Markwiki do
 
   describe 'creating a new Markwiki site' do
     before :all do
-      Markwiki::Init.init_site(@name)
+      Markwiki::Markwiki.init_site(@name)
     end
 
     after :all do
@@ -19,12 +19,7 @@ describe Markwiki do
     end
     
     it 'creates the top-level directory' do
-      top = Dir.exists? @name
-      expect(top).to eq(true)
-    end
-
-    it 'doesn\'t create unintended directories' do
-      expect(Dir.exists? "#{@name}test").to eq(false)
+      expect(Dir.exists? @name).to eq(true)
     end
 
     it 'creates the index page' do
