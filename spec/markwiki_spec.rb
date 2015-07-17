@@ -23,6 +23,10 @@ describe Markwiki do
       expect(top).to eq(true)
     end
 
+    it 'doesn\'t create unintended directories' do
+      expect(Dir.exists? "#{@name}test").to eq(false)
+    end
+
     it 'creates the index page' do
       expect(File.exists? "#{@name}/index.html").to eq(true)
     end
